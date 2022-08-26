@@ -26,8 +26,16 @@ const getOne = async (id) => {
   return data;
 };
 
+const removeOneUpdate = async (id) => {
+  if (id === undefined) return { error: 400, messagem: 'id é obrigatório' };
+
+  const removeOneBlog = await model.removeOneUpdate(id);
+  return removeOneBlog;
+};
+
 module.exports = {
   getOne,
   create,
   update,
+  removeOneUpdate,
 };

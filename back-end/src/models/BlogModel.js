@@ -56,9 +56,15 @@ const getOne = async (id) => {
   // return blogOne[blogOne.length -1];
 };
 
+const removeOneUpdate = async (id) => {
+  const removeBlog = await UpdateBlog.update({ ativo: false }, { where: { id }});
+  return removeBlog;
+};
+
 module.exports = {
   getOne,
   getAllUpdate,
   create,
   update,
+  removeOneUpdate,
 };

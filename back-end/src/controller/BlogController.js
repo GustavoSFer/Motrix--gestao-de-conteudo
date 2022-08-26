@@ -27,8 +27,18 @@ const getOne = async (req, res, next) => {
   return res.status(200).json(blogOne);
 };
 
+const removeOneUpdate = async (req, res, next) => {
+  const { id } = req.params;
+  const removeOneBlog = await service.removeOneUpdate(id);
+
+  if (removeOneBlog.error) return next(removeOneBlog);
+
+  return res.status(200).json(removeOneBlog);
+};
+
 module.exports = {
   getOne,
   create,
   update,
+  removeOneUpdate,
 };
