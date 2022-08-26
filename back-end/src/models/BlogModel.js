@@ -61,10 +61,16 @@ const removeOneUpdate = async (id) => {
   return removeBlog;
 };
 
+const remove = async (id) => {
+  const removeBlog = await UpdateBlog.update({ ativo: false }, { where: { blogId: id }});
+  return removeBlog;
+};
+
 module.exports = {
   getOne,
   getAllUpdate,
   create,
   update,
   removeOneUpdate,
+  remove,
 };

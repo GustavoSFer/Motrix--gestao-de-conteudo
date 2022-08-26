@@ -72,3 +72,15 @@ Caso de erro, será retornado:
 
 ============
 
+Colocando uma atualização de um blog especifico para "desativado"
+caminho: * /updateBlog/:id * - passar o id do blog como parametro
+
+Obs: Não é removido do banco de dados, apenas setado para false.
+
+
+============
+
+"Desativado" todas as atualizações de um blog
+caminho: * /blog/:id * - passar o id do blog como parametro
+
+Obs: Não é removido do banco de dados, apenas setado para false.
