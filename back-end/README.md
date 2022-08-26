@@ -20,3 +20,55 @@ Caso de erro, será retornado:
 }
 
 ==========
+
+Atualizando post
+caminho: * /updateBlog *
+necessario enviar as inforçaões:
+{
+  "corpo": "texto sobre o post"
+  "blogId": 1 (obs: blogId é o id que se refere ao blog)
+}
+
+Post atualizado com sucesso, será retornado:
+{
+  "id": 18,
+  "corpo": "fazendo uma atualização de teste",
+  "dataAtualizacao": "2022-08-26T18:49:56.084Z",
+  "ativo": true,
+  "blogId": 1
+}
+
+Caso de erro, será retornado:
+{
+  "message": "mensagem do erro"
+}
+
+
+================
+
+Buscando a ultima atualização de um post especifico
+caminho: * /blog/:id * - passar o id do blog como parametro
+necessario enviar as inforçaões:
+http://localhost:3001/blog/14
+
+Será retornado a utima atualização:
+{
+  "id": 18,
+  "corpo": "fazendo uma atualização de teste",
+  "dataAtualizacao": "2022-08-26T18:49:56.000Z",
+  "blogId": 14,
+  "ativo": true,
+  "Blog": {
+    "id": 14,
+    "titulo": "teste",
+    "dataCriacao": "2022-08-26T17:55:01.000Z"
+  }
+}
+
+Caso de erro, será retornado:
+{
+  "message": "mensagem do erro"
+}
+
+============
+

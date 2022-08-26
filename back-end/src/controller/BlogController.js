@@ -12,20 +12,23 @@ const create = async (req, res, next) => {
 const update = async (req, res, next) => {
   const { corpo, blogId } = req.body;
 
-  const updateBlog = await service.update(corpo, blogId);
+  const updateBlog = await service.update(corpo, +blogId);
   if (updateBlog.error) return next(updateBlog);
 
   return res.status(200).json(updateBlog);
 };
 
-const getAll = async (req, res) => {
-  const data = await service.getAll();
+const getOne = async (req, res, next) => {
+  const { id } = req.params;
+  const blogOne = await service.getOne(id);
 
-  return res.status(200).json(data);
+  if (blogOne.error) return next(blogOne);
+
+  return res.status(200).json(blogOne);
 };
 
 module.exports = {
-  getAll,
+  getOne,
   create,
   update,
 };

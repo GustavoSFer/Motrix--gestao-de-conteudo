@@ -41,17 +41,19 @@ const getAllUpdate = async () => {
 };
 
 
-const getAll = async () => {
-  const data = await UpdateBlog.findAll({
+const getOne = async (id) => {
+  const blogOne = await UpdateBlog.findAll({
+    where: { blogId: id },
     include: Blog,
-    where: { ativo: 1 },
   });
 
-  return data;
+  console.log(blogOne.length);
+
+  return blogOne[blogOne.length -1];
 };
 
 module.exports = {
-  getAll,
+  getOne,
   getAllUpdate,
   create,
   update,

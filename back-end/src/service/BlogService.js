@@ -19,14 +19,15 @@ const update = async (corpo, blogId) => {
   return updateBlog;
 };
 
-const getAll = async () => {
-  // const data = await model.getAllUpdate();
-  const data = await model.getAll();
+const getOne = async (id) => {
+  if (id === undefined) return { error: 400, messagem: 'id é obrigatório' };
+
+  const data = await model.getOne(id);
   return data;
 };
 
 module.exports = {
-  getAll,
+  getOne,
   create,
   update,
 };
