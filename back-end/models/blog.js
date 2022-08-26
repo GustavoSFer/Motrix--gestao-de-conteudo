@@ -9,8 +9,7 @@ const Blog = (sequelize, DataTypes) => {
   });
 
   Blog.assiciate = (models) => {
-    Blog.hasMany(models.updateBlogs,
-      { foreignKey: 'blogId' });
+    Blog.hasMany(models.updateBlogs);
   }
 
   return Blog;

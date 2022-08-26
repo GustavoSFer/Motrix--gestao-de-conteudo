@@ -42,14 +42,18 @@ const getAllUpdate = async () => {
 
 
 const getOne = async (id) => {
-  const blogOne = await UpdateBlog.findAll({
-    where: { blogId: id },
-    include: Blog,
-  });
+  const teste = await Blog.findAll({
+    include: { model: UpdateBlog }
+   })
+  console.log(teste);
+  // const blogOne = await UpdateBlog.findAll({
+  //   where: { blogId: id },
+  //   include: Blog,
+  // });
 
-  console.log(blogOne.length);
+  // console.log(blogOne.length);
 
-  return blogOne[blogOne.length -1];
+  // return blogOne[blogOne.length -1];
 };
 
 module.exports = {
