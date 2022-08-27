@@ -18,6 +18,14 @@ const update = async (req, res, next) => {
   return res.status(200).json(updateBlog);
 };
 
+const getAll = async (req, res, next) => {
+  const blogAll = await service.getAll();
+
+  if (blogAll.error) return next(blogAll);
+
+  return res.status(200).json(blogAll);
+};
+
 const getOne = async (req, res, next) => {
   const { id } = req.params;
   const blogOne = await service.getOne(id);
@@ -47,6 +55,7 @@ const remove = async (req, res, next) => {
 
 module.exports = {
   getOne,
+  getAll,
   create,
   update,
   removeOneUpdate,

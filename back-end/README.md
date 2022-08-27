@@ -48,25 +48,59 @@ Caso de erro, será retornado:
 
 ================
 
-Buscando a ultima atualização de um post especifico
-caminho: * /blog/:id * - passar o id do blog como parametro
+Buscando um post e retornando o post com suas atualizações
+caminho: * /blog * - passar o id do blog como parametro
 METODO: GET
-necessario enviar as inforçaões:
-http://localhost:3001/blog/14
 
-Será retornado a utima atualização:
-{
-  "id": 18,
-  "corpo": "fazendo uma atualização de teste",
-  "dataAtualizacao": "2022-08-26T18:49:56.000Z",
-  "blogId": 14,
-  "ativo": true,
-  "Blog": {
-    "id": 14,
-    "titulo": "teste",
-    "dataCriacao": "2022-08-26T17:55:01.000Z"
+Será retornado:
+[
+  {
+    "id": 1,
+    "titulo": "primeiro",
+    "dataCriacao": "2022-07-25T00:00:00.000Z",
+    "UpdateBlogs": [
+      {
+        "id": 3,
+        "corpo": "mais uma para teste",
+        "dataAtualizacao": "2022-07-29T00:00:00.000Z",
+        "blogId": 1,
+        "ativo": false,
+        "BlogId": 1
+      },
+      {
+        "id": 2,
+        "corpo": "informaçoesjfd fdj teste",
+        "dataAtualizacao": "2022-07-28T00:00:00.000Z",
+        "blogId": 1,
+        "ativo": true,
+        "BlogId": 1
+      },
+      {
+        "id": 1,
+        "corpo": "informaçoes de teste",
+        "dataAtualizacao": "2022-07-25T00:00:00.000Z",
+        "blogId": 1,
+        "ativo": true,
+        "BlogId": 1
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "titulo": "segundo",
+    "dataCriacao": "2022-07-26T00:00:00.000Z",
+    "UpdateBlogs": [
+      {
+        "id": 4,
+        "corpo": "informaçoesjfd fdj teste",
+        "dataAtualizacao": "2022-07-25T00:00:00.000Z",
+        "blogId": 2,
+        "ativo": true,
+        "BlogId": 2
+      }
+    ]
   }
-}
+]
 
 Caso de erro, será retornado:
 {

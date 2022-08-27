@@ -19,6 +19,11 @@ const update = async (corpo, blogId) => {
   return updateBlog;
 };
 
+const getAll = async () => {
+  const blogAll = await model.getAll();
+  return blogAll;
+};
+
 const getOne = async (id) => {
   if (id === undefined) return { error: 400, messagem: 'id é obrigatório' };
 
@@ -42,6 +47,7 @@ const remove = async (id) => {
 
 module.exports = {
   getOne,
+  getAll,
   create,
   update,
   removeOneUpdate,

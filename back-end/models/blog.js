@@ -8,7 +8,7 @@ const Blog = (sequelize, DataTypes) => {
     timestamps: false,
   });
 
-  Blog.assiciate = (models) => {
+  Blog.associate = (models) => {
     Blog.hasMany(models.UpdateBlog);
   }
 

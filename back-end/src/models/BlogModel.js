@@ -40,20 +40,23 @@ const getAllUpdate = async () => {
   return data;
 };
 
+const getAll = async () => {
+  const blogAll = await Blog.findAll({
+    include: { model: UpdateBlog }
+   });
+
+  return blogAll
+};
 
 const getOne = async (id) => {
-  const teste = await Blog.findAll({
-    include: { model: UpdateBlog }
-   })
-  console.log(teste);
-  // const blogOne = await UpdateBlog.findAll({
-  //   where: { blogId: id },
-  //   include: Blog,
-  // });
+  const blogOne = await UpdateBlog.findAll({
+    where: { blogId: id },
+    include: Blog,
+  });
 
-  // console.log(blogOne.length);
+  console.log(blogOne.length);
 
-  // return blogOne[blogOne.length -1];
+  return blogOne[blogOne.length -1];
 };
 
 const removeOneUpdate = async (id) => {
@@ -68,6 +71,7 @@ const remove = async (id) => {
 
 module.exports = {
   getOne,
+  getAll,
   getAllUpdate,
   create,
   update,
