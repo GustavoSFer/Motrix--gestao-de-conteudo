@@ -9,7 +9,7 @@ const Blog = (sequelize, DataTypes) => {
   });
 
   Blog.assiciate = (models) => {
-    Blog.hasMany(models.UpdateBlogs);
+    Blog.hasMany(models.UpdateBlog);
   }
 
   return Blog;

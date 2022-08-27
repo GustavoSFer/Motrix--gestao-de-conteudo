@@ -1,5 +1,6 @@
 Cadastrando um novo post
 caminho: * /blog *
+METODO: POST
 necessario enviar as inforçaões:
 {
   "titulo": "nome titulo",
@@ -23,6 +24,7 @@ Caso de erro, será retornado:
 
 Atualizando post
 caminho: * /updateBlog *
+METODO: POST - 'porque não é atualizado e sim criado um novo documento na tabela de atualização'
 necessario enviar as inforçaões:
 {
   "corpo": "texto sobre o post"
@@ -48,6 +50,7 @@ Caso de erro, será retornado:
 
 Buscando a ultima atualização de um post especifico
 caminho: * /blog/:id * - passar o id do blog como parametro
+METODO: GET
 necessario enviar as inforçaões:
 http://localhost:3001/blog/14
 
@@ -74,7 +77,7 @@ Caso de erro, será retornado:
 
 Colocando uma atualização de um blog especifico para "desativado"
 caminho: * /updateBlog/:id * - passar o id do blog como parametro
-
+METODO: PATCH
 Obs: Não é removido do banco de dados, apenas setado para false.
 
 
@@ -82,5 +85,6 @@ Obs: Não é removido do banco de dados, apenas setado para false.
 
 "Desativado" todas as atualizações de um blog
 caminho: * /blog/:id * - passar o id do blog como parametro
+METODO: PATCH
 
 Obs: Não é removido do banco de dados, apenas setado para false.
