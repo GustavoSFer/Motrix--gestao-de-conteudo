@@ -8,12 +8,12 @@ function Principal() {
 
       <header>
         <Header>
-          <div>
+          <div className="mt-4">
             <input type="text" />
             <button type="button">Pesquisar</button>
           </div>
           <div>
-            <select>
+            <select className="mt-4">
               <option value="1">1</option>
               <option value="2">2</option>
             </select>
