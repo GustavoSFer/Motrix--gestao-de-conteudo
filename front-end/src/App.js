@@ -1,11 +1,19 @@
 import Rotas from './Router';
+import MyContext from './MyContext/MyContext';
 import './App.css';
 
 function App() {
+
+  const contextValue = {
+  };
+
+
   return (
-    <div className="App">
-      <Rotas />
-    </div>
+    <MyContext.Provider value={contextValue}>
+      <div className="App">
+        <Rotas />
+      </div>
+    </MyContext.Provider>
   );
 }
 
