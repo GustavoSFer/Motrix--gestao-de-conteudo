@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import MyContext from '../MyContext';
 import CardBlog from '../Components/CardBlog';
 import Header from '../Components/Header';
 
 function Principal() {
+  const { blogs, loading } = useContext(MyContext);
   return (
     <div>
-
+      {loading && <p>Carregando ...</p>}
       <header>
         <Header>
           <div className="col-5 col-sm-5 m-2">
@@ -33,12 +35,9 @@ function Principal() {
 
       <main className="border border-success container">
         <div className="row row-cols-2 g-lg-3 d-flex justify-content-center">
-          <CardBlog />
-          <CardBlog />
-          <CardBlog />
-          <CardBlog />
-          <CardBlog />
-          <CardBlog />
+          {
+          blogs ? blogs.map((blog) => <CardBlog item={blog} key={blog.id} />) : <h1>Sem blogs</h1>
+        }
         </div>
       </main>
 

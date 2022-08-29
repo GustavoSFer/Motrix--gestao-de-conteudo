@@ -11,6 +11,4 @@ const RequestApi = async (endpoint) => {
   }
 };
 
-export default {
-  RequestApi,
-};
+export default RequestApi;
