@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 function Header({ children }) {
   // Css - style
   const width = {
-    height: '100px',
+    // height: '100px',
   };
   return (
-    <header className="d-flex justify-content-around bg-dark text-white" style={width}>
-      <h1 className="mt-3">logo</h1>
+    <header className="row bg-dark text-white" style={width}>
+      <h1 className="col-5 col-sm-3 m-2">logo</h1>
       { children }
     </header>
   );

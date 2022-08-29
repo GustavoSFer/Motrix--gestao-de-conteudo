@@ -8,21 +8,31 @@ function Principal() {
 
       <header>
         <Header>
-          <div className="mt-4">
-            <input type="text" />
-            <button type="button">Pesquisar</button>
+          <div className="col-5 col-sm-5 m-2">
+            <div className="d-flex justify-content-center">
+              <div className="">
+                <label htmlFor="txt-pesquisa">
+                  <input type="text" className="w-100" id="txt-pesquisa" />
+                </label>
+              </div>
+              <div className="">
+                <button type="button">Peq</button>
+              </div>
+            </div>
           </div>
-          <div>
-            <select className="mt-4">
-              <option value="1">1</option>
-              <option value="2">2</option>
+
+          <div className="col-12 col-sm-3 m-2">
+            <select>
+              <option value="1">Filtro</option>
+              <option value="2">Mais recentes</option>
+              <option value="2">Mais antigas</option>
             </select>
           </div>
         </Header>
       </header>
 
-      <main className="border border-success container text-center">
-        <div className="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+      <main className="border border-success container">
+        <div className="row row-cols-2 g-lg-3 d-flex justify-content-center">
           <CardBlog />
           <CardBlog />
           <CardBlog />
