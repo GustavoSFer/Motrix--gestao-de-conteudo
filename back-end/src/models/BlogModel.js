@@ -49,14 +49,14 @@ const getAll = async () => {
 };
 
 const getOne = async (id) => {
-  const blogOne = await UpdateBlog.findAll({
-    where: { blogId: id },
-    include: Blog,
+  const blogOne = await Blog.findAll({
+    where: { id },
+    include: { model: UpdateBlog },
   });
 
   console.log(blogOne.length);
 
-  return blogOne[blogOne.length -1];
+  return blogOne;
 };
 
 const removeOneUpdate = async (id) => {
