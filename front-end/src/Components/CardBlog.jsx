@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 function CardBlog({ item }) {
   // Css - style
@@ -13,17 +14,23 @@ function CardBlog({ item }) {
     return `${separaData[2]}/${separaData[1]}/${separaData[0]}`;
   };
 
+  const handleRemove = () => {
+    console.log('remove clicado');
+  };
+
   const updateBlogs = item.UpdateBlogs.length;
   return (
     <div className="card m-2" style={width}>
       <div className="card-body">
-        <h5 className="card-title">{item.titulo}</h5>
-        <p className="card-text">
-          {`${item.UpdateBlogs[updateBlogs - 1].corpo.slice(0, 50)}...`}
-        </p>
+        <Link to={`/detalhes/${item.id}`}>
+          <h5 className="card-title">{item.titulo}</h5>
+          <p className="card-text">
+            {`${item.UpdateBlogs[updateBlogs - 1].corpo.slice(0, 50)}...`}
+          </p>
+        </Link>
         <div className="d-flex justify-content-around">
-          <button type="button">Editar</button>
-          <button type="button">Excluir</button>
+          <Link to={`editar/${item.id}`}>Editar</Link>
+          <button type="button" onClick={handleRemove}>Excluir</button>
         </div>
         <div className="d-flex justify-content-around">
           <div>
