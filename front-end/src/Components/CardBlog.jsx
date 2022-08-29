@@ -7,6 +7,9 @@ function CardBlog({ item }) {
   const width = {
     width: '18em',
   };
+  const fontSize = {
+    fontSize: '12px',
+  };
 
   const formatData = (data) => {
     const result = data.split('T');
@@ -22,24 +25,36 @@ function CardBlog({ item }) {
   return (
     <div className="card m-2" style={width}>
       <div className="card-body">
-        <Link to={`/detalhes/${item.id}`}>
-          <h5 className="card-title">{item.titulo}</h5>
-          <p className="card-text">
-            {`${item.UpdateBlogs[updateBlogs - 1].corpo.slice(0, 50)}...`}
+        <Link to={`/detalhes/${item.id}`} className="text-decoration-none">
+          <h5 className="card-title text-dark">{item.titulo}</h5>
+          <p className="card-text text-muted">
+            {`${item.UpdateBlogs[updateBlogs - 1].corpo.slice(0, 115)}...`}
           </p>
         </Link>
-        <div className="d-flex justify-content-around">
-          <Link to={`editar/${item.id}`}>Editar</Link>
-          <button type="button" onClick={handleRemove}>Excluir</button>
+        <div className="d-flex justify-content-around mt-4">
+          <Link to={`editar/${item.id}`} className="text-decoration-none text-primary">
+            Editar
+          </Link>
+          <button
+            type="button"
+            onClick={handleRemove}
+            className="text-decoration-none btn btn-link p-0"
+          >
+            Excluir
+          </button>
         </div>
-        <div className="d-flex justify-content-around">
+        <div className="d-flex justify-content-around mt-4" style={fontSize}>
           <div>
-            <p>postado:</p>
-            <time>{formatData(item.dataCriacao)}</time>
+            <p className="text-black-50 lh-1 m-0">postado</p>
+            <time className="text-dark fst-italic">
+              {formatData(item.dataCriacao)}
+            </time>
           </div>
           <div>
-            <p>Atualizado:</p>
-            <time>{formatData(item.UpdateBlogs[updateBlogs - 1].dataAtualizacao)}</time>
+            <p className="text-black-50 lh-1 m-0">Atualizado</p>
+            <time className="text-dark fst-italic">
+              {formatData(item.UpdateBlogs[updateBlogs - 1].dataAtualizacao)}
+            </time>
           </div>
         </div>
       </div>
