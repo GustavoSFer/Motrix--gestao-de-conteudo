@@ -47,10 +47,24 @@ const RequestRemover = async (endpoint) => {
   }
 };
 
+const RequestPostBlog = async (endpoint, body) => {
+  try {
+    console.log('aquiiiiii');
+    const { data } = await axios.post((baseURL) + endpoint, body);
+    console.log(body);
+    return data;
+  } catch (error) {
+    console.log(body);
+
+    return console.error('Algo deu errado! ', error);
+  }
+};
+
 export {
   RequestApi,
   RequestOneBlog,
   RequestUpdateBlog,
   RequestDesativar,
   RequestRemover,
+  RequestPostBlog,
 };

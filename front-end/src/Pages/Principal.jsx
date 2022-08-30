@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import MyContext from '../MyContext';
 import CardBlog from '../Components/CardBlog';
 import Header from '../Components/Header';
-import { RequestApi } from '../Services/RequestApi';
+import { RequestApi, RequestPostBlog } from '../Services/RequestApi';
 import Input from '../Components/Input';
 import lupa from '../imagens/lupa.png';
 import Button from '../Components/Button';
@@ -10,9 +10,18 @@ import Button from '../Components/Button';
 function Principal() {
   const { blogs, loading, setBlogs } = useContext(MyContext);
   const [pesquisa, setPesquisa] = useState('');
+  const [txtTitulo, setTitulo] = useState('');
+  const [txtCorpo, setCorpo] = useState('');
 
   const api = async () => {
     setBlogs(await RequestApi('/blog'));
+  };
+
+  const handleClick = async () => {
+    await RequestPostBlog('/blog', { titulo: txtTitulo, corpo: txtCorpo });
+    api();
+    setCorpo('');
+    setTitulo('');
   };
 
   useEffect(() => {
@@ -60,7 +69,31 @@ function Principal() {
       </header>
 
       <main className="border border-success container">
-        <div className="row row-cols-2 g-lg-3 d-flex justify-content-center">
+        <div className="m-3 border border-primary p-2 border-opacity-25">
+          <p>Campo para realizar novo cadastro</p>
+          <Input
+            type="text"
+            name="Título"
+            value={txtTitulo}
+            sty="text-center"
+            handleChange={(e) => {
+              if (e.target.value.length <= 40) {
+                setTitulo(e.target.value);
+              }
+            }}
+          />
+          <Input
+            type="text"
+            name="texto"
+            value={txtCorpo}
+            sty="text-center"
+            handleChange={(e) => setCorpo(e.target.value)}
+          />
+          <div className="mt-3 text-end">
+            <Button click={handleClick}>Salvar</Button>
+          </div>
+        </div>
+        <div className="row row-cols-2 g-lg-3 d-flex justify-content-center mt-5">
           {
             blogs && blogs.map((blog) => <CardBlog item={blog} key={blog.id} />)
           }
