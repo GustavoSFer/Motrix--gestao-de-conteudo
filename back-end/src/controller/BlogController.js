@@ -2,6 +2,7 @@ const service = require('../service/BlogService');
 
 const create = async (req, res, next) => {
   const { titulo, corpo } = req.body;
+  console.log('>>>>>', req.body);
 
   const createBlog = await service.create(titulo, corpo);
   if (createBlog.error) return next(createBlog);

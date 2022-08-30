@@ -3,7 +3,7 @@ const { Blog, UpdateBlog } = require("../../models");
 const DATA_ATUAL = new Date();
 
 const create = async (titulo, corpo) => {
-  const blog = await Blog.create({ titulo, dataCriacao: dataAgora, ativo: 1 });
+  const blog = await Blog.create({ titulo, dataCriacao: DATA_ATUAL, ativo: 1 });
   await UpdateBlog.create({
     corpo,
     dataAtualizacao: DATA_ATUAL,
