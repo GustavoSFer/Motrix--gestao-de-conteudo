@@ -52,7 +52,6 @@ function Editar() {
           className="form-control"
           value={txtCorpo}
           style={heightextArea}
-          id="floatingTextarea2"
           onChange={(e) => setTxtCorpo(e.target.value)}
         />
         <div className="mt-3 text-end">

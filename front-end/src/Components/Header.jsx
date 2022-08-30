@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 function Header({ children }) {
   // Css - style
@@ -8,7 +9,9 @@ function Header({ children }) {
   };
   return (
     <header className="row bg-dark text-white p-3" style={width}>
-      <h1 className="col-5 col-sm-3 m-2">logo</h1>
+      <Link to="/" className="text-decoration-none col-5 col-sm-3 m-2">
+        <h1 className="text-white">logo</h1>
+      </Link>
       { children }
     </header>
   );

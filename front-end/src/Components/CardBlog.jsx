@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import formatData from '../Utils';
 
 function CardBlog({ item }) {
   // Css - style
@@ -9,12 +10,6 @@ function CardBlog({ item }) {
   };
   const fontSize = {
     fontSize: '12px',
-  };
-
-  const formatData = (data) => {
-    const result = data.split('T');
-    const separaData = result[0].split('-');
-    return `${separaData[2]}/${separaData[1]}/${separaData[0]}`;
   };
 
   const handleRemove = () => {
