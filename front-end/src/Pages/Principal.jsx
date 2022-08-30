@@ -46,8 +46,8 @@ function Principal() {
       <main className="border border-success container">
         <div className="row row-cols-2 g-lg-3 d-flex justify-content-center">
           {
-          blogs ? blogs.map((blog) => <CardBlog item={blog} key={blog.id} />) : <h1>Sem blogs</h1>
-        }
+            blogs && blogs.map((blog) => <CardBlog item={blog} key={blog.id} />)
+          }
         </div>
       </main>
 

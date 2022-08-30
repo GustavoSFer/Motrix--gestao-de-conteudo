@@ -1,27 +1,31 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Button from './Button';
+import { RequestDesativar, RequestRemover, RequestApi } from '../Services/RequestApi';
 
 import formatData from '../Utils';
+import MyContext from '../MyContext';
 
 function CardBlog({ item }) {
-  const [clickRemove, setClikRemove] = useState(true);
+  const [clickExcluir, setClickExcluir] = useState(true);
+  const { setBlogs } = useContext(MyContext);
   const updateBlogs = item.UpdateBlogs.length;
 
   const handleRemove = () => {
-    console.log('remove clicado');
-    setClikRemove(!clickRemove);
+    setClickExcluir(!clickExcluir);
   };
 
-  const desativar = () => {
-    console.log('desativar clicado');
-    setClikRemove(!clickRemove);
+  const desativar = async () => {
+    await RequestDesativar(`/blog/${item.id}`);
+    setClickExcluir(!clickExcluir);
+    setBlogs(await RequestApi('/blog'));
   };
 
-  const excluir = () => {
-    console.log('deleta clicado');
-    setClikRemove(!clickRemove);
+  const excluir = async () => {
+    await RequestRemover(`/blog/${item.id}`);
+    setClickExcluir(!clickExcluir);
+    setBlogs(await RequestApi('/blog'));
   };
 
   // Css - style
@@ -77,7 +81,7 @@ function CardBlog({ item }) {
       <div
         className={`border border-primary rounded
         position-absolute top-0 end-0
-        bg-dark text-white ${clickRemove && 'd-none'}`}
+        bg-dark text-white ${clickExcluir && 'd-none'}`}
         style={remove}
       >
         <div className="text-end">
