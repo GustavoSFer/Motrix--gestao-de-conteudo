@@ -2,6 +2,7 @@ const Blog = (sequelize, DataTypes) => {
   const Blog = sequelize.define("Blog", {
     titulo: DataTypes.STRING,
     dataCriacao: DataTypes.DATE,
+    ativo: DataTypes.BOOLEAN,
   }, {
     sequelize,
     tableName: 'blogs',

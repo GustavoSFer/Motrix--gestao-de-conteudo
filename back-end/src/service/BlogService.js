@@ -38,6 +38,13 @@ const removeOneUpdate = async (id) => {
   return removeOneBlog;
 };
 
+const desativar = async (id) => {
+  if (id === undefined) return { error: 400, messagem: 'id é obrigatório' };
+
+  const desativarBlog = await model.desativar(id);
+  return desativarBlog;
+};
+
 const remove = async (id) => {
   if (id === undefined) return { error: 400, messagem: 'id é obrigatório' };
 
@@ -51,5 +58,6 @@ module.exports = {
   create,
   update,
   removeOneUpdate,
+  desativar,
   remove,
 };

@@ -42,6 +42,7 @@ const getAllUpdate = async () => {
 
 const getAll = async () => {
   const blogAll = await Blog.findAll({
+    where: { ativo: true },
     include: { model: UpdateBlog }
    });
 
@@ -64,8 +65,15 @@ const removeOneUpdate = async (id) => {
   return removeBlog;
 };
 
+const desativar = async (id) => {
+  const desativarBlog = await UpdateBlog.update({ ativo: false }, { where: { blogId: id }});
+  return desativarBlog;
+};
+
 const remove = async (id) => {
-  const removeBlog = await UpdateBlog.update({ ativo: false }, { where: { blogId: id }});
+  const removeBlog = await UpdateBlog.destroy({ where: { blogId: id }});
+  const remover = await Blog.destroy({ where: { id }});
+  // remover.Blog.destroy();
   return removeBlog;
 };
 
@@ -76,5 +84,6 @@ module.exports = {
   create,
   update,
   removeOneUpdate,
+  desativar,
   remove,
 };

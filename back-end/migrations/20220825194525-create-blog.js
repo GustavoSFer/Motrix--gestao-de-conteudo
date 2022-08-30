@@ -15,6 +15,10 @@ module.exports = {
       dataCriacao: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      ativo: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN
       }
     });
   },
