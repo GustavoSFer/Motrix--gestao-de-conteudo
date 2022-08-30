@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { RequestOneBlog } from '../Services/RequestApi';
 import Header from '../Components/Header';
 import formatData from '../Utils';
 import ListUpdate from '../Components/ListUpdate';
+import Button from '../Components/Button';
 
 function Detalhes() {
   const { id } = useParams();
+  const history = useNavigate();
 
   const [blog, setBlog] = useState([]);
   const [dataCriacao, setDataCriacao] = useState('');
@@ -35,6 +37,9 @@ function Detalhes() {
           blog.titulo
           && blog.UpdateBlogs.map((item) => <ListUpdate item={item} key={item.id} />)
         }
+        <div className="text-end mt-3">
+          <Button click={() => history('/')}>Voltar</Button>
+        </div>
       </div>
     </div>
   );
