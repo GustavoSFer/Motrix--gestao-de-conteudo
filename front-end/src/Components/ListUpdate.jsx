@@ -18,7 +18,10 @@ function ListUpdate({ item }) {
 }
 
 ListUpdate.propTypes = {
-  item: PropTypes.objectOf.isRequired,
+  item: PropTypes.shape({
+    corpo: PropTypes.string,
+    dataAtualizacao: PropTypes.string,
+  }).isRequired,
 };
 
 export default ListUpdate;

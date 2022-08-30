@@ -7,7 +7,7 @@ function Button({
   return (
     <button
       type="button"
-      className={`btn btn-primary pe-5 ps-5 fw-bold ${sty}`}
+      className={`btn btn-primary pe-4 ps-4 fw-bold ${sty}`}
       onClick={click}
     >
       {children}

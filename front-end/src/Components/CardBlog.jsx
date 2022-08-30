@@ -1,9 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import Button from './Button';
+
 import formatData from '../Utils';
 
 function CardBlog({ item }) {
+  const [clickRemove, setClikRemove] = useState(true);
+  const updateBlogs = item.UpdateBlogs.length;
+
+  const handleRemove = () => {
+    console.log('remove clicado');
+    setClikRemove(!clickRemove);
+  };
+
+  const desativar = () => {
+    console.log('desativar clicado');
+    setClikRemove(!clickRemove);
+  };
+
+  const excluir = () => {
+    console.log('deleta clicado');
+    setClikRemove(!clickRemove);
+  };
+
   // Css - style
   const width = {
     width: '18em',
@@ -11,12 +31,12 @@ function CardBlog({ item }) {
   const fontSize = {
     fontSize: '12px',
   };
-
-  const handleRemove = () => {
-    console.log('remove clicado');
+  const remove = {
+    width: '18em',
+    height: '17em',
+    zIndex: '1',
   };
 
-  const updateBlogs = item.UpdateBlogs.length;
   return (
     <div className="card m-2" style={width}>
       <div className="card-body">
@@ -52,6 +72,21 @@ function CardBlog({ item }) {
             </time>
           </div>
         </div>
+      </div>
+
+      <div
+        className={`border border-primary rounded
+        position-absolute top-0 end-0
+        bg-dark text-white ${clickRemove && 'd-none'}`}
+        style={remove}
+      >
+        <div className="text-end">
+          <Button click={() => handleRemove()}>X</Button>
+        </div>
+        <h4 className="mt-5">{item.titulo}</h4>
+        <p className="mt-3">Escolha a opção que deseja:</p>
+        <Button click={desativar} sty="m-1">Desativar</Button>
+        <Button click={excluir}>Excluir</Button>
       </div>
     </div>
   );
