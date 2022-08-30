@@ -11,7 +11,7 @@ const RequestApi = async (endpoint) => {
   }
 };
 
-const RquestOneBlog = async (endpoint) => {
+const RequestOneBlog = async (endpoint) => {
   try {
     const { data } = await axios.get((baseURL) + endpoint);
     return data;
@@ -20,7 +20,17 @@ const RquestOneBlog = async (endpoint) => {
   }
 };
 
+const RequestUpdateBlog = async (endpoint, body) => {
+  try {
+    const { data } = await axios.post((baseURL) + endpoint, body);
+    return data;
+  } catch (error) {
+    return console.error('Algo deu errado! ', error);
+  }
+};
+
 export {
   RequestApi,
-  RquestOneBlog,
+  RequestOneBlog,
+  RequestUpdateBlog,
 };

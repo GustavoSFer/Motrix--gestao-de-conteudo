@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Button from '../Components/Button';
 import Header from '../Components/Header';
-import { RquestOneBlog } from '../Services/RequestApi';
+import { RequestOneBlog, RequestUpdateBlog } from '../Services/RequestApi';
 
 function Editar() {
   const { id } = useParams();
@@ -12,10 +12,15 @@ function Editar() {
   const [txtCorpo, setTxtCorpo] = useState('');
 
   const api = async () => {
-    const result = await RquestOneBlog(`/blog/${id}`);
+    const result = await RequestOneBlog(`/blog/${id}`);
     setBlog(result[0]);
     const tamanhoUpadateBlog = result[0].UpdateBlogs.length;
     setTxtCorpo(result[0].UpdateBlogs[tamanhoUpadateBlog - 1].corpo);
+  };
+
+  const handleClick = async () => {
+    await RequestUpdateBlog('/updateBlog', { corpo: txtCorpo, blogId: id });
+    history('/');
   };
 
   useEffect(() => {
@@ -51,7 +56,7 @@ function Editar() {
           onChange={(e) => setTxtCorpo(e.target.value)}
         />
         <div className="mt-3 text-end">
-          <Button>Salvar</Button>
+          <Button click={handleClick}>Salvar</Button>
         </div>
       </div>
     </div>

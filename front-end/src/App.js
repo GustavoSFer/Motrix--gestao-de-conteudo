@@ -20,6 +20,7 @@ function App() {
 
   const contextValue = {
     blogs,
+    setBlogs,
     loading,
   };
 

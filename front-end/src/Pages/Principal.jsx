@@ -1,10 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import MyContext from '../MyContext';
 import CardBlog from '../Components/CardBlog';
 import Header from '../Components/Header';
+import { RequestApi } from '../Services/RequestApi';
 
 function Principal() {
-  const { blogs, loading } = useContext(MyContext);
+  const { blogs, loading, setBlogs } = useContext(MyContext);
+
+  const api = async () => {
+    setBlogs(await RequestApi('/blog'));
+  };
+
+  useEffect(() => {
+    api();
+  }, []);
+
   return (
     <div>
       {loading && <p>Carregando ...</p>}
