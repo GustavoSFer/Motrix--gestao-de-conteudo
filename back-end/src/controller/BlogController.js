@@ -46,7 +46,7 @@ const removeOneUpdate = async (req, res, next) => {
 
 const desativar = async (req, res, next) => {
   const { id } = req.params;
-  const desativarBlog = await service.desativar(id);
+  const desativarBlog = await service.desativar(+id);
 
   if (desativarBlog.error) return next(desativarBlog);
 

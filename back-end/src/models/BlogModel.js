@@ -66,6 +66,8 @@ const removeOneUpdate = async (id) => {
 };
 
 const desativar = async (id) => {
+  console.log('chegou aqui', id);
+  const blog = await Blog.update({ ativo: false }, { where: { id }})
   const desativarBlog = await UpdateBlog.update({ ativo: false }, { where: { blogId: id }});
   return desativarBlog;
 };
