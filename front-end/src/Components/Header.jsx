@@ -7,7 +7,7 @@ function Header({ children }) {
     // height: '100px',
   };
   return (
-    <header className="row bg-dark text-white" style={width}>
+    <header className="row bg-dark text-white p-3" style={width}>
       <h1 className="col-5 col-sm-3 m-2">logo</h1>
       { children }
     </header>

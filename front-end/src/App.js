@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Rotas from './Router';
 import MyContext from './MyContext';
-import RequestApi from './Services/RequestApi';
+import { RequestApi } from './Services/RequestApi';
 import './App.css';
 
 function App() {

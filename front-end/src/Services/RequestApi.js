@@ -7,8 +7,20 @@ const RequestApi = async (endpoint) => {
     const { data } = await axios.get((baseURL) + endpoint);
     return data;
   } catch (error) {
-    return console.error(error);
+    return console.error('Algo deu errado! ', error);
   }
 };
 
-export default RequestApi;
+const RquestOneBlog = async (endpoint) => {
+  try {
+    const { data } = await axios.get((baseURL) + endpoint);
+    return data;
+  } catch (error) {
+    return console.error('Algo deu errado! ', error);
+  }
+};
+
+export {
+  RequestApi,
+  RquestOneBlog,
+};
