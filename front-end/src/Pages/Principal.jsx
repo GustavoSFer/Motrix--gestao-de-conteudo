@@ -1,11 +1,15 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import MyContext from '../MyContext';
 import CardBlog from '../Components/CardBlog';
 import Header from '../Components/Header';
 import { RequestApi } from '../Services/RequestApi';
+import Input from '../Components/Input';
+import lupa from '../imagens/lupa.png';
+import Button from '../Components/Button';
 
 function Principal() {
   const { blogs, loading, setBlogs } = useContext(MyContext);
+  const [pesquisa, setPesquisa] = useState('');
 
   const api = async () => {
     setBlogs(await RequestApi('/blog'));
@@ -15,20 +19,32 @@ function Principal() {
     api();
   }, []);
 
+  const img = {
+    minHeight: '30px',
+    maxHeight: '30px',
+    padding: '5px',
+  };
+
   return (
     <div>
       {loading && <p>Carregando ...</p>}
       <header>
         <Header>
-          <div className="col-5 col-sm-5 m-2">
+          <div className="col-12 col-sm-5 m-2">
             <div className="d-flex justify-content-center">
               <div className="">
-                <label htmlFor="txt-pesquisa">
-                  <input type="text" className="w-100" id="txt-pesquisa" />
-                </label>
+                <Input
+                  type="text"
+                  name="Pesquisar"
+                  value={pesquisa}
+                  handleChange={(e) => setPesquisa(e.target.value)}
+                  sty="w-100"
+                />
               </div>
-              <div className="">
-                <button type="button">Peq</button>
+              <div className="ms-2">
+                <Button>
+                  <img src={lupa} alt="pesquisar" style={img} />
+                </Button>
               </div>
             </div>
           </div>
