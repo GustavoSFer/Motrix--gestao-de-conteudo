@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Rotas from './Router';
 import MyContext from './MyContext';
 import { RequestApi } from './Services/RequestApi';
+import formatData from './Utils';
 import './App.css';
 
 function App() {
@@ -28,6 +29,40 @@ function App() {
     }
   };
 
+  const filtrarOpcao = (opcao) => {
+    if (opcao === 'recentes') {
+      console.log('recentes');
+      const result = [...blogs].sort((a, b) => {
+        const bData = formatData(b.dataCriacao);
+        const aData = formatData(a.dataCriacao);
+        if (aData < bData) {
+          return 1;
+        }
+        if (aData > bData) {
+          return -1;
+        }
+        return 0
+      });
+      console.log(result);
+      setBlogs(result);
+    } else {
+      console.log('antigas');
+      const result = [...blogs].sort((a, b) => {
+        const bData = formatData(b.dataCriacao);
+        const aData = formatData(a.dataCriacao);
+        if (aData > bData) {
+          return 1;
+        }
+        if (aData < bData) {
+          return -1;
+        }
+        return 0
+      });
+      console.log(result);
+      setBlogs(result);
+    }
+  }
+
   const limparPesquisa = () => {
     api();
   }
@@ -42,6 +77,7 @@ function App() {
     loading, setLoading,
     pesquisa, setPesquisa,
     pesquisarTitulo, limparPesquisa,
+    filtrarOpcao,
   };
 
 

@@ -10,7 +10,7 @@ import Button from '../Components/Button';
 function Principal() {
   const {
     blogs, loading, setLoading, setBlogs, pesquisa, setPesquisa,
-    pesquisarTitulo, limparPesquisa,
+    pesquisarTitulo, limparPesquisa, filtrarOpcao,
   } = useContext(MyContext);
   const [txtTitulo, setTitulo] = useState('');
   const [txtCorpo, setCorpo] = useState('');
@@ -39,7 +39,6 @@ function Principal() {
 
   return (
     <div>
-      {loading && <p>Carregando ...</p>}
       <header>
         <Header>
           <div className="col-12 col-sm-5 m-2">
@@ -67,16 +66,17 @@ function Principal() {
           </div>
 
           <div className="col-12 col-sm-3 m-2">
-            <select>
-              <option value="1">Filtro</option>
-              <option value="2">Mais recentes</option>
-              <option value="2">Mais antigas</option>
+            <select onChange={(e) => filtrarOpcao(e.target.value)}>
+              <option value="1">== Filtro ==</option>
+              <option value="recentes">Mais recentes</option>
+              <option value="antigas">Mais antigas</option>
             </select>
           </div>
         </Header>
       </header>
 
       <main className="border border-success container">
+        {loading && <p>Carregando ...</p>}
         <div className="m-3 border border-primary p-2 border-opacity-25">
           <p>Campo para realizar novo cadastro.</p>
           <Input
