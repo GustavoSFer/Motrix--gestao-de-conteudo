@@ -8,13 +8,17 @@ import lupa from '../imagens/lupa.png';
 import Button from '../Components/Button';
 
 function Principal() {
-  const { blogs, loading, setBlogs } = useContext(MyContext);
-  const [pesquisa, setPesquisa] = useState('');
+  const {
+    blogs, loading, setLoading, setBlogs, pesquisa, setPesquisa,
+    pesquisarTitulo, limparPesquisa,
+  } = useContext(MyContext);
   const [txtTitulo, setTitulo] = useState('');
   const [txtCorpo, setCorpo] = useState('');
 
   const api = async () => {
+    setLoading(true);
     setBlogs(await RequestApi('/blog'));
+    setLoading(false);
   };
 
   const handleClick = async () => {
@@ -31,7 +35,6 @@ function Principal() {
   const img = {
     minHeight: '30px',
     maxHeight: '30px',
-    padding: '5px',
   };
 
   return (
@@ -44,15 +47,20 @@ function Principal() {
               <div className="">
                 <Input
                   type="text"
-                  name="Pesquisar"
+                  name="Pesquisar por título"
                   value={pesquisa}
                   handleChange={(e) => setPesquisa(e.target.value)}
                   sty="w-100"
                 />
               </div>
               <div className="ms-2">
-                <Button>
+                <Button click={() => pesquisarTitulo(pesquisa)}>
                   <img src={lupa} alt="pesquisar" style={img} />
+                </Button>
+              </div>
+              <div className="ms-2">
+                <Button click={() => limparPesquisa(pesquisa)} sty="p-2">
+                  Limpar
                 </Button>
               </div>
             </div>
@@ -70,7 +78,7 @@ function Principal() {
 
       <main className="border border-success container">
         <div className="m-3 border border-primary p-2 border-opacity-25">
-          <p>Campo para realizar novo cadastro</p>
+          <p>Campo para realizar novo cadastro.</p>
           <Input
             type="text"
             name="Título"
