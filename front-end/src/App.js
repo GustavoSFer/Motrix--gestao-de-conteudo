@@ -31,7 +31,6 @@ function App() {
 
   const filtrarOpcao = (opcao) => {
     if (opcao === 'recentes') {
-      console.log('recentes');
       const result = [...blogs].sort((a, b) => {
         const bData = formatData(b.dataCriacao);
         const aData = formatData(a.dataCriacao);
@@ -43,10 +42,8 @@ function App() {
         }
         return 0
       });
-      console.log(result);
       setBlogs(result);
     } else {
-      console.log('antigas');
       const result = [...blogs].sort((a, b) => {
         const bData = formatData(b.dataCriacao);
         const aData = formatData(a.dataCriacao);
@@ -58,7 +55,6 @@ function App() {
         }
         return 0
       });
-      console.log(result);
       setBlogs(result);
     }
   }
