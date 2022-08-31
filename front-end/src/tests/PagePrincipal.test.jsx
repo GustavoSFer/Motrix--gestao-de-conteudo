@@ -5,7 +5,7 @@ import App from '../App';
 
 /* globals describe, expect, it */
 describe('Verificando se é rederizados os elementos na tela principal', () => {
-  describe('Header', () => {
+  describe('Pagina Principal', () => {
     it('Verificando se tem duas imagem logo e a lupa esta na tela', () => {
       render(<MemoryRouter><App /></MemoryRouter>);
       const logo = screen.getAllByRole('img');
@@ -52,7 +52,9 @@ describe('Verificando se é rederizados os elementos na tela principal', () => {
       expect(buttons).toHaveLength(3);
     });
     it('Verificando se o filtro por data esta na tela', () => {
-
+      render(<MemoryRouter><App /></MemoryRouter>);
+      const filtro = screen.getByTestId('filtro-data');
+      expect(filtro).toBeInTheDocument();
     });
   });
 });
