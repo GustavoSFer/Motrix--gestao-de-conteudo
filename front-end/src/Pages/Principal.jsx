@@ -53,12 +53,12 @@ function Principal() {
                 />
               </div>
               <div className="ms-2">
-                <Button click={() => pesquisarTitulo(pesquisa)}>
+                <Button click={() => pesquisarTitulo(pesquisa)} dataTest="btn-pesquisa">
                   <img src={lupa} alt="pesquisar" style={img} />
                 </Button>
               </div>
               <div className="ms-2">
-                <Button click={() => limparPesquisa(pesquisa)} sty="p-2">
+                <Button click={() => limparPesquisa(pesquisa)} sty="p-2" dataTest="limpar">
                   Limpar
                 </Button>
               </div>
@@ -69,6 +69,7 @@ function Principal() {
             <select
               onChange={(e) => filtrarOpcao(e.target.value)}
               className="form-select text-center"
+              data-testid="filtro-data"
             >
               <option value="1">== Filtro ==</option>
               <option value="recentes">Recentes</option>
@@ -101,7 +102,7 @@ function Principal() {
             handleChange={(e) => setCorpo(e.target.value)}
           />
           <div className="mt-3 text-end">
-            <Button click={handleClick}>Salvar</Button>
+            <Button click={handleClick} dataTest="salvar">Salvar</Button>
           </div>
         </div>
         <div className="row row-cols-2 g-lg-3 d-flex justify-content-center mt-5">

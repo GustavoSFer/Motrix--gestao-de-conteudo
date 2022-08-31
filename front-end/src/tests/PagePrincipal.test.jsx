@@ -23,16 +23,33 @@ describe('Verificando se é rederizados os elementos na tela principal', () => {
     });
     it('Verificando se o input de "Texto" está na tela', () => {
       render(<MemoryRouter><App /></MemoryRouter>);
-      const txtPesquisa = screen.getByTestId('texto');
-      expect(txtPesquisa).toBeInTheDocument();
+      const txtTexto = screen.getByTestId('texto');
+      expect(txtTexto).toBeInTheDocument();
     });
     it('Verificando se o input de "Título" está na tela', () => {
       render(<MemoryRouter><App /></MemoryRouter>);
-      const txtPesquisa = screen.getByTestId('Título');
-      expect(txtPesquisa).toBeInTheDocument();
+      const txtTitulo = screen.getByTestId('Título');
+      expect(txtTitulo).toBeInTheDocument();
     });
-    it('Verificando se o botão de pesquisar esta na tela', () => {
-
+    it('Verificando se o botão de "Pesquisar" esta na tela', () => {
+      render(<MemoryRouter><App /></MemoryRouter>);
+      const btn = screen.getByTestId('btn-pesquisa');
+      expect(btn).toBeInTheDocument();
+    });
+    it('Verificando se o botão de "Limpar" esta na tela', () => {
+      render(<MemoryRouter><App /></MemoryRouter>);
+      const btnLimpar = screen.getByTestId('limpar');
+      expect(btnLimpar).toBeInTheDocument();
+    });
+    it('Verificando se o botão de "Salvar" esta na tela', () => {
+      render(<MemoryRouter><App /></MemoryRouter>);
+      const btnSalvar = screen.getByTestId('salvar');
+      expect(btnSalvar).toBeInTheDocument();
+    });
+    it('Verifica se existe 3 botões na tela', () => {
+      render(<MemoryRouter><App /></MemoryRouter>);
+      const buttons = screen.getAllByRole('button');
+      expect(buttons).toHaveLength(3);
     });
     it('Verificando se o filtro por data esta na tela', () => {
 
