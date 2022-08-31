@@ -25,5 +25,6 @@
 
 ## Configurando variavel de ambiente API
   * Crie um arquivo .env e informe nele a URL do banco
-  ``` REACT_APP_API_URL=https://.... ```
-Se não foi informado por padão será utilizado 'http://localhost:3001'
+  ``` REACT_APP_API_URL= ```
+Se não for informado, por padão será utilizado 'http://localhost:3001'
+  **`Dentro da pasta Service que é informado o banco.`**
