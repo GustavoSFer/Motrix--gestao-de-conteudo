@@ -87,4 +87,18 @@ describe('# Controller', () => {
       Sinon.restore();
     });
   });
+
+  describe('# removeOneUpdate', () => {
+    before(function () {
+      request.params = 1;
+      response.status = Sinon.stub().returns(response);
+      response.json = Sinon.stub().returns();
+    });
+    it('Buscando um post - Deve retornar o status 200', async () => {
+      Sinon.stub(serviceBlog, 'removeOneUpdate').resolves([1]);
+      await controllerBlog.removeOneUpdate(request, response);
+      expect(response.status.calledWith(200)).to.be.equal(true);
+      Sinon.restore();
+    });
+  });
 });
