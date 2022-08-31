@@ -56,3 +56,17 @@ describe('#GetOne', () => {
     expect(one).to.be.eql({ error: 400, messagem: 'id é obrigatório' });
   });
 });
+
+describe('# RemoveOneUpdate', () => {
+  it('Removendo um post especifico', async () => {
+    sinon.stub(modelBlog, 'removeOneUpdate').resolves([1]);
+    const remove = await serviceBlog.removeOneUpdate(1);
+
+    expect(remove).to.be.eql([1]);
+  });
+  it('Quando não passa o id retorna um erro', async () => {
+    const remove = await serviceBlog.removeOneUpdate();
+
+    expect(remove).to.be.eql({ error: 400, messagem: 'id é obrigatório' });
+  });
+});
