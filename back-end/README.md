@@ -48,7 +48,7 @@ PORT=3001
 # Informações sobre a API
 
 1. Cadastrando um novo post
-  - caminho: * /blog *
+  - Caminho: **/blog**
   - METODO: POST
     * Necessario enviar as inforçaões:
 
@@ -79,7 +79,7 @@ PORT=3001
 ==========
 
 2. Atualizando post
-  - caminho: * /updateBlog *
+  - Caminho: **/updateBlog**
   - METODO: POST - 'porque não é atualizado e sim criado um novo documento na tabela de atualização'
 
     * Necessario enviar as inforçaões:
@@ -112,7 +112,7 @@ PORT=3001
 ================
 
 3. Buscando um post e retornando o post com suas atualizações
-  - caminho: * /blog * - passar o id do blog como parametro
+  - Caminho: **/blog** - passar o id do blog como **`parametro`**
   - METODO: GET
 
     * Será retornado:
@@ -177,14 +177,14 @@ PORT=3001
 ============
 
 4. Colocando uma atualização de um blog especifico para "desativado"
-  - caminho: * /updateBlog/:id * - passar o id do blog como parametro
+  - Caminho: **/updateBlog/:id** - passar o id do blog como **`parametro`**
   - METODO: PATCH
     * Obs: Não é removido do banco de dados, apenas setado para false.
 
 
 ============
 
-5. "Desativado" todas as atualizações de um blog
-  - caminho: * /blog/:id * - passar o id do blog como parametro
+5. "Desativando" todas as atualizações de um blog
+  - Caminho: **/blog/:id** - passar o id do blog como parametro
    - METODO: PATCH
       * Obs: Não é removido do banco de dados, apenas setado para false.
