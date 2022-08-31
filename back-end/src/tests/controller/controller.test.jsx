@@ -8,7 +8,7 @@ const response = {};
 const request = {};
 
 describe('# Controller', () => {
-   describe('# Create', () => {
+  describe('# Create', () => {
     before(function () {
       request.body = { titulo: "realização de teste", corpo: "fazendo uma atualização de teste" };
       response.status = Sinon.stub().returns(response);
@@ -54,6 +54,36 @@ describe('# Controller', () => {
           },
         }
       })).to.be.equal(true);
+      Sinon.restore();
+    });
+  });
+
+  describe('# GetAll', () => {
+    before(function () {
+      request.body = { };
+      response.status = Sinon.stub().returns(response);
+      response.json = Sinon.stub().returns();
+    });
+    it('Buscando todos os post - Deve retornar o status 200', async () => {
+      Sinon.stub(serviceBlog, 'getAll').resolves(mock.returnGetAllService);
+
+      await controllerBlog.getAll(request, response);
+      expect(response.status.calledWith(200)).to.be.equal(true);
+      expect(response.json.calledWith(mock.returnGetAllService)).to.be.equal(true);
+      Sinon.restore();
+    });
+  });
+
+  describe('# GetOne', () => {
+    before(function () {
+      request.params = 1;
+      response.status = Sinon.stub().returns(response);
+      response.json = Sinon.stub().returns();
+    });
+    it('Buscando um post - Deve retornar o status 200', async () => {
+      Sinon.stub(serviceBlog, 'getOne').resolves(mock.controllerCreate);
+      await controllerBlog.getOne(request, response);
+      expect(response.status.calledWith(200)).to.be.equal(true);
       Sinon.restore();
     });
   });
