@@ -21,7 +21,7 @@ const update = async (corpo, blogId) => {
 
 const getAll = async () => {
   const blogAll = await model.getAll();
-  console.log(blogAll);
+
   return blogAll;
 };
 

@@ -27,8 +27,23 @@ const update = {
   }
 };
 
+const returnGetAllService = [
+ {
+    Blog: {
+      dataValues: {
+        id: 3,
+        titulo: 'Terceiro',
+        dataCriacao: '2022-07-26T00:00:00.000Z',
+        ativo: true,
+        UpdateBlogs: [Array]
+      },
+    },
+  }
+]
+
 module.exports = {
   responseCreate,
   bodyCreate,
   update,
+  returnGetAllService,
 };

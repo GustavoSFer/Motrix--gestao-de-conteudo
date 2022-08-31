@@ -26,3 +26,19 @@ describe('Create', () => {
     expect(createBlog).to.be.eql({ error: 400, message: 'Corpo é um campo obrigatório' })
   });
 });
+
+describe('# GetAll', () => {
+  it('Buscando as informaçoes no banco', async () => {
+    sinon.stub(modelBlog, 'getAll').resolves(mock.returnGetAllService);
+    const all = await serviceBlog.getAll();
+
+    expect(all).to.be.eql(mock.returnGetAllService);
+  });
+
+  it('Buscando as informaçoes no banco, quando nao tiver retornar um array vazio', async () => {
+    sinon.stub(modelBlog, 'getAll').resolves([]);
+    const all = await serviceBlog.getAll();
+
+    expect(all).to.be.empty;
+  });
+});
