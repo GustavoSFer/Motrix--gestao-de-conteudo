@@ -41,9 +41,19 @@ const returnGetAllService = [
   }
 ]
 
+const controllerCreate = {
+  id: 11,
+  titulo: 'realização de teste',
+  dataCriacao: '2022-08-31T16:40:26.647Z',
+  ativo: true,
+  corpo: 'fazendo uma atualização de teste'
+}
+
+
 module.exports = {
   responseCreate,
   bodyCreate,
   update,
   returnGetAllService,
+  controllerCreate,
 };
