@@ -35,7 +35,6 @@ const removeOneUpdate = async (id) => {
   if (id === undefined) return { error: 400, messagem: 'id é obrigatório' };
 
   const removeOneBlog = await model.removeOneUpdate(id);
-  console.log(removeOneBlog);
   return removeOneBlog;
 };
 
