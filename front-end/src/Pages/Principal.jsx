@@ -66,18 +66,21 @@ function Principal() {
           </div>
 
           <div className="col-12 col-sm-3 m-2">
-            <select onChange={(e) => filtrarOpcao(e.target.value)}>
+            <select
+              onChange={(e) => filtrarOpcao(e.target.value)}
+              className="form-select text-center"
+            >
               <option value="1">== Filtro ==</option>
-              <option value="recentes">Mais recentes</option>
-              <option value="antigas">Mais antigas</option>
+              <option value="recentes">Recentes</option>
+              <option value="antigas">Antigas</option>
             </select>
           </div>
         </Header>
       </header>
 
-      <main className="border border-success container">
+      <main className="container mb-5">
         {loading && <p>Carregando ...</p>}
-        <div className="m-3 border border-primary p-2 border-opacity-25">
+        <div className="m-3 border border-primary rounded p-3 border-opacity-50">
           <p>Campo para realizar novo cadastro.</p>
           <Input
             type="text"
@@ -107,7 +110,6 @@ function Principal() {
           }
         </div>
       </main>
-
     </div>
   );
 }

@@ -76,10 +76,9 @@ function App() {
     filtrarOpcao,
   };
 
-
   return (
     <MyContext.Provider value={contextValue}>
-      <div className="App">
+      <div className="App bg-secondary bg-gradient bg-opacity-10">
         <Rotas />
       </div>
     </MyContext.Provider>
