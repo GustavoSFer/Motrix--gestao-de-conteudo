@@ -2,7 +2,6 @@ const service = require('../service/BlogService');
 
 const create = async (req, res, next) => {
   const { titulo, corpo } = req.body;
-  console.log('>>>>>', req.body);
 
   const createBlog = await service.create(titulo, corpo);
   if (createBlog.error) return next(createBlog);
@@ -56,7 +55,6 @@ const desativar = async (req, res, next) => {
 
 const remove = async (req, res, next) => {
   const { id } = req.params;
-  console.log(id);
   const removeBlog = await service.remove(id);
 
   if (removeBlog.error) return next(removeBlog);
