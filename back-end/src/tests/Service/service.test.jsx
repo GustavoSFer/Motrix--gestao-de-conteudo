@@ -35,10 +35,24 @@ describe('# GetAll', () => {
     expect(all).to.be.eql(mock.returnGetAllService);
   });
 
-  it('Buscando as informaçoes no banco, quando nao tiver retornar um array vazio', async () => {
-    sinon.stub(modelBlog, 'getAll').resolves([]);
-    const all = await serviceBlog.getAll();
+  // it('Quando nao tiver informaçoes, retornar um array vazio', async () => {
+  //   sinon.stub(modelBlog, 'getAll').resolves([]);
+  //   const all = await serviceBlog.getAll();
 
-    expect(all).to.be.empty;
+  //   expect(all).to.be.empty;
+  // });
+});
+
+describe('#GetOne', () => {
+  it('Retornando um post especifico', async () => {
+    sinon.stub(modelBlog, 'getOne').resolves(mock.returnGetAllService);
+    const one = await serviceBlog.getOne(1);
+
+    expect(one).to.be.equal(mock.returnGetAllService);
+  });
+  it('Retornando um erro quando não é passado o id', async () => {
+    const one = await serviceBlog.getOne(undefined);
+
+    expect(one).to.be.eql({ error: 400, messagem: 'id é obrigatório' });
   });
 });

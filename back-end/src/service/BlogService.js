@@ -29,6 +29,7 @@ const getOne = async (id) => {
   if (id === undefined) return { error: 400, messagem: 'id é obrigatório' };
 
   const data = await model.getOne(id);
+  console.log(data);
   return data;
 };
 
