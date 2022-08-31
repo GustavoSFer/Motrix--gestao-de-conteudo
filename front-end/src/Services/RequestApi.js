@@ -7,17 +7,14 @@ const RequestApi = async (endpoint) => {
     const { data } = await axios.get((baseURL) + endpoint);
     return data;
   } catch (error) {
-    return console.error('Algo deu errado! ', error);
+    console.error('Algo deu errado! ', error);
+    return [];
   }
 };
 
 const RequestOneBlog = async (endpoint) => {
-  try {
-    const { data } = await axios.get((baseURL) + endpoint);
-    return data;
-  } catch (error) {
-    return console.error('Algo deu errado! ', error);
-  }
+  const { data } = await axios.get((baseURL) + endpoint);
+  return data;
 };
 
 const RequestUpdateBlog = async (endpoint, body) => {
@@ -49,13 +46,9 @@ const RequestRemover = async (endpoint) => {
 
 const RequestPostBlog = async (endpoint, body) => {
   try {
-    console.log('aquiiiiii');
     const { data } = await axios.post((baseURL) + endpoint, body);
-    console.log(body);
     return data;
   } catch (error) {
-    console.log(body);
-
     return console.error('Algo deu errado! ', error);
   }
 };

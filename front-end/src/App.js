@@ -12,9 +12,13 @@ function App() {
 
 
   const api = async () => {
-    setLoading(true);
-    setBlogs(await RequestApi('/blog'));
-    setLoading(false);
+    try {
+      setLoading(true);
+      setBlogs(await RequestApi('/blog'));
+      setLoading(false);
+    } catch(e) {
+      return console.log('Erro', e);
+    }
   };
 
   const pesquisarTitulo = (txt) => {
