@@ -18,6 +18,10 @@
   * Visualizar o histórico de modificações de cada conteúdo.
 <br><br><br>
 
+![Captura de tela de 2022-09-01 15-13-24](https://user-images.githubusercontent.com/71854204/187984274-2c4602a5-77f8-46a3-b4f7-44be296226d5.png)
+
+<br><br><br>
+
   # Instruções para iniciar o projeto
   1 - Clone o repositório
   * Chave SSH
