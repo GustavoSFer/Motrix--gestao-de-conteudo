@@ -14,6 +14,7 @@ function Principal() {
   } = useContext(MyContext);
   const [txtTitulo, setTitulo] = useState('');
   const [txtCorpo, setCorpo] = useState('');
+  const [error, setError] = useState('');
 
   const api = async () => {
     setLoading(true);
@@ -22,10 +23,15 @@ function Principal() {
   };
 
   const handleClick = async () => {
-    await RequestPostBlog('/blog', { titulo: txtTitulo, corpo: txtCorpo });
-    api();
-    setCorpo('');
-    setTitulo('');
+    if (txtCorpo === '' || txtTitulo === '') {
+      setError('Por favor, preencher os campos corretamente!');
+    } else {
+      await RequestPostBlog('/blog', { titulo: txtTitulo, corpo: txtCorpo });
+      api();
+      setCorpo('');
+      setTitulo('');
+      setError('');
+    }
   };
 
   useEffect(() => {
@@ -80,7 +86,6 @@ function Principal() {
       </header>
 
       <main className="container mb-5">
-        {loading && <p>Carregando ...</p>}
         <div className="m-3 border border-primary rounded p-3 border-opacity-50">
           <p>Campo para realizar novo cadastro.</p>
           <Input
@@ -101,10 +106,12 @@ function Principal() {
             sty="text-center"
             handleChange={(e) => setCorpo(e.target.value)}
           />
+          { error }
           <div className="mt-3 text-end">
             <Button click={handleClick} dataTest="salvar">Salvar</Button>
           </div>
         </div>
+        {loading && <p>Carregando ...</p>}
         <div className="row row-cols-2 g-lg-3 d-flex justify-content-center mt-5">
           {
             blogs && blogs.map((blog) => <CardBlog item={blog} key={blog.id} />)
