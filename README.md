@@ -31,7 +31,7 @@
     * git clone https://github.com/GustavoSFer/Motrix--gestao-de-conteudo.git
 
   * Entre na pasta do repositório que você acabou de clonar:
-    * cd app-msb
+    * cd Motrix--gestao-de-conteudo
 
 2 - Instale as dependências e inicialize o projeto
   * Instale as dependências:
