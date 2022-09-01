@@ -9,7 +9,7 @@
     "start": "npm run start:back && npm run start:front",
     "install:back": "cd back-end && npm i",
     "install:front": "cd front-end && npm i",
-    "install": "npm run install:back && install:front",
+    "install": "npm run install:back && npm run install:front",
     "test:back": "cd back-end && npm test",
     "test:front": "cd front-end && npm test"
   },
