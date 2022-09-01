@@ -46,7 +46,7 @@ function Editar() {
           <Button click={() => history('/')}>Cancelar</Button>
         </div>
       </Header>
-      <p className="mt-4">Editar informações</p>
+      <h5 className="mt-4">Editar informações</h5>
       <div className="form-floating mt-4" style={textArea}>
         <textarea
           className="form-control"

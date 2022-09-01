@@ -31,7 +31,7 @@ function Detalhes() {
           {dataCriacao}
         </h4>
       </Header>
-      <p className="mt-4">Detalhes</p>
+      <h5 className="mt-4">Detalhes</h5>
       <div className="container mt-4">
         {
           blog.titulo

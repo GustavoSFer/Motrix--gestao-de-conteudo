@@ -51,7 +51,11 @@ function CardBlog({ item }) {
           </p>
         </Link>
         <div className="d-flex justify-content-around mt-4">
-          <Link to={`editar/${item.id}`} className="text-decoration-none text-primary">
+          <Link
+            to={`editar/${item.id}`}
+            className="text-decoration-none text-primary"
+            data-testid="editar"
+          >
             Editar
           </Link>
           <button
