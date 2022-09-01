@@ -1,0 +1,27 @@
+{
+  "name": "motrix",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:back": "cd back-end && npm start",
+    "start:front": "cd front-end && npm start",
+    "start": "npm run start:back && npm run start:front",
+    "install:back": "cd back-end && npm i",
+    "install:front": "cd front-end && npm i",
+    "install": "npm run install:back && install:front",
+    "test:back": "cd back-end && npm test",
+    "test:front": "cd front-end && npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GustavoSFer/Motrix--gestao-de-conteudo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GustavoSFer/Motrix--gestao-de-conteudo/issues"
+  },
+  "homepage": "https://github.com/GustavoSFer/Motrix--gestao-de-conteudo#readme"
+}
