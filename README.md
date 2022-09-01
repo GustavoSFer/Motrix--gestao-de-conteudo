@@ -25,7 +25,7 @@
   # Instruções para iniciar o projeto
   1 - Clone o repositório
   * Chave SSH
-      * git clone git@github.com:GustavoSFer/Motrix--gestao-de-conteudo.git
+    * git clone git@github.com:GustavoSFer/Motrix--gestao-de-conteudo.git
 
   * Chave HTTPS
     * git clone https://github.com/GustavoSFer/Motrix--gestao-de-conteudo.git
@@ -37,8 +37,13 @@
   * Instale as dependências:
     * npm install
   
-  * Inicialize o projeto:
-    * npm start
+  * Inicialize o projeto: `obs: antes de inicializar faça as configurações do banco`
+    * npm start - `Caso não abrir a pagina no nagevar, inicie separado`
+      * cd banck-end 
+      ``` npm start```
+      * cd front-end 
+      ``` npm start```
+
 
 
 ## Conexão com o Banco:
