@@ -20,7 +20,7 @@
   * Exemplo
 ``` docker container run -p 3001:3001 msb ```
 
-## Observação: Banco de dados Utilizado no projeto MySQL. Certifique-se que ja tenho em seu computador ou rodando em um container Docker
+## Observação: Banco de dados Utilizado no projeto MySQL. Certifique-se que ja tenha em seu computador ou rodando em um container Docker
  -- Link: https://hub.docker.com/_/mysql
 
 
