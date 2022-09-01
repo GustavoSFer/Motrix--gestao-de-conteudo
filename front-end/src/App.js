@@ -1,32 +1,88 @@
 import { useEffect, useState } from 'react';
 import Rotas from './Router';
-import MyContext from './MyContext/MyContext';
+import MyContext from './MyContext';
 import { RequestApi } from './Services/RequestApi';
+import formatData from './Utils';
 import './App.css';
 
 function App() {
-  const [data, setData] = useState([]);
+  const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [pesquisa, setPesquisa] = useState('');
 
-  const api = async (query = 'computador') => {
-    setLoading(true);
-    const teste = await RequestApi('/blog')
-    setLoading(false);
+
+  const api = async () => {
+    try {
+      setLoading(true);
+      setBlogs(await RequestApi('/blog'));
+      setLoading(false);
+    } catch(e) {
+      return console.log('Erro', e);
+    }
   };
+
+  const pesquisarTitulo = (txt) => {
+    if (txt !== ''){
+      const result = [...blogs].filter((item) => {
+        const toLowerTitulo = item.titulo.toLowerCase();
+        const toLowerTxt = txt.toLowerCase();
+        return toLowerTitulo === toLowerTxt;
+      });
+      setBlogs(result);
+      setPesquisa('');
+    }
+  };
+
+  const filtrarOpcao = (opcao) => {
+    if (opcao === 'recentes') {
+      const result = [...blogs].sort((a, b) => {
+        const bData = formatData(b.dataCriacao);
+        const aData = formatData(a.dataCriacao);
+        if (aData < bData) {
+          return 1;
+        }
+        if (aData > bData) {
+          return -1;
+        }
+        return 0
+      });
+      setBlogs(result);
+    } else {
+      const result = [...blogs].sort((a, b) => {
+        const bData = formatData(b.dataCriacao);
+        const aData = formatData(a.dataCriacao);
+        if (aData > bData) {
+          return 1;
+        }
+        if (aData < bData) {
+          return -1;
+        }
+        return 0
+      });
+      setBlogs(result);
+    }
+  }
+
+  const limparPesquisa = () => {
+    api();
+  }
 
   useEffect(() => {
     api()
   },[]);
 
   const contextValue = {
-    data,
-    loading,
+    blogs,
+    setBlogs,
+    loading, setLoading,
+    pesquisa, setPesquisa,
+    pesquisarTitulo, limparPesquisa,
+    filtrarOpcao,
   };
-
 
   return (
     <MyContext.Provider value={contextValue}>
-      <div className="App">
+      <div className="App bg-secondary bg-gradient bg-opacity-10">
         <Rotas />
       </div>
     </MyContext.Provider>

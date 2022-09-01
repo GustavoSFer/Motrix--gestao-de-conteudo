@@ -44,6 +44,15 @@ const removeOneUpdate = async (req, res, next) => {
   return res.status(200).json(removeOneBlog);
 };
 
+const desativar = async (req, res, next) => {
+  const { id } = req.params;
+  const desativarBlog = await service.desativar(+id);
+
+  if (desativarBlog.error) return next(desativarBlog);
+
+  return res.status(200).json(desativarBlog);
+};
+
 const remove = async (req, res, next) => {
   const { id } = req.params;
   const removeBlog = await service.remove(id);
@@ -59,5 +68,6 @@ module.exports = {
   create,
   update,
   removeOneUpdate,
+  desativar,
   remove,
 };
