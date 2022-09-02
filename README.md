@@ -10,7 +10,8 @@
 - Node.js
 - Express
 - MySql
-- Mocha | Chai | Sinon.js
+- Sequelize
+- Mocha | Chai | Sinon.js | RTL
 
 ## Objetivo do projeto:
   * Criar uma aplicação de gestão de conteúdos.
@@ -44,7 +45,7 @@
       * cd front-end 
       ``` npm start```
 
-
+<br><br>
 
 ## Conexão com o Banco:
 
@@ -62,6 +63,20 @@ PORT=3001
 ```
 ### Para saber os metodos e retorno da API, entrar no README do back end. link: https://github.com/GustavoSFer/Motrix--gestao-de-conteudo/tree/master/back-end
 
+<br><br>
+
+# Sequelize
+
+<br>
+
+### Criar banco de dados:
+```npx sequelize db:create```
+
+### Criar tabelas:
+```npx sequelize db:migrate```
+
+<br><br>
+
 
 ## Conexão com o Front End e o Back End:
 
@@ -75,6 +90,8 @@ Se não for informado, por padão será utilizado
 **`http://localhost:3001`** 
 
 Dentro da pasta `Service` que é informado o banco.
+
+<br>
 
 ## Rodando os teste do projeto
   * Teste Front-end
